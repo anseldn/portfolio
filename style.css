@@ -1,0 +1,1277 @@
+/* 
+   Anselmus Dwi Nugroho - Personal Portfolio Style Sheet
+   Optimized for: https://anseldn.com (Vercel deployment)
+   Design Aesthetic: Apple "Mac Studio" Light Minimalist
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- DESIGN SYSTEM TOKENS --- */
+:root {
+  /* --- Apple "Mac Studio" Color Palette --- */
+  --apple-bg: #f5f5f7;
+  /* Light Aluminum White (Main Background) */
+  --apple-card-bg: #ffffff;
+  /* Pure White (Cards & Elevated Containers) */
+  --apple-text-primary: #1d1d1f;
+  /* Charcoal Black (Headers & Main Text) */
+  --apple-text-secondary: #6e6e73;
+  /* Space Gray (Subtitles & Captions) */
+  --apple-text-muted: #86868b;
+  /* Light Space Gray (Muted metadata) */
+  --apple-accent: #0071e3;
+  /* Apple Blue (Buttons, Links, Active States) */
+  --apple-accent-hover: #0066cc;
+  /* Hover Dark Blue */
+
+  /* --- Apple UI System Variables --- */
+  --apple-border: rgba(0, 0, 0, 0.08);
+  --apple-border-hover: rgba(0, 0, 0, 0.15);
+  --apple-radius: 12px;
+  --apple-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --apple-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Layout & Sizing */
+  --container-max-width: 1200px;
+  --nav-height: 70px;
+}
+
+/* --- RESET & BASIC STYLES --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--apple-bg);
+  color: var(--apple-text-primary);
+  font-family: var(--apple-font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(0, 113, 227, 0.15);
+  color: var(--apple-accent);
+}
+
+/* Custom Webkit Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--apple-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid var(--apple-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--apple-accent);
+}
+
+/* Hide dark-mode glow wrapper and cursor glow in Light Apple Mode */
+.glowing-bg-wrapper,
+.cursor-glow {
+  display: none !important;
+}
+
+/* Typography headers letter-tracking alignment */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--apple-text-primary);
+  letter-spacing: -0.022em;
+  /* Apple's distinct tight tracking for headers */
+  font-weight: 700;
+}
+
+p {
+  color: var(--apple-text-secondary);
+}
+
+/* --- STRUCTURAL LAYOUT --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 4.5rem 0;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* --- APPLE INDUSTRIAL PORTFOLIO CARD --- */
+.portfolio-card {
+  background-color: var(--apple-card-bg);
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius);
+  padding: 1.75rem;
+  transition: var(--apple-transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Subtle depth on hover without loud shadow effects */
+.portfolio-card:hover {
+  border-color: var(--apple-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+/* 3D mouse highlight element used in hover script (made extremely subtle for light mode) */
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 113, 227, 0.03), transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 100;
+  transition: var(--apple-transition);
+}
+
+header.scrolled {
+  background: rgba(245, 245, 247, 0.85);
+  border-bottom: 1px solid var(--apple-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  height: 60px;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  font-family: var(--apple-font);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.015em;
+  color: var(--apple-text-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--apple-text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: var(--apple-transition);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--apple-accent);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--apple-accent);
+  transition: var(--apple-transition);
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Mobile Navigation Toggle Button */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--apple-text-primary);
+  margin-bottom: 5px;
+  transition: var(--apple-transition);
+}
+
+.mobile-nav-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Active Hamburger states */
+.mobile-nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- HERO & SUMMARY SECTION (#summary) --- */
+#summary {
+  min-height: calc(100vh - 40px);
+  display: flex;
+  align-items: center;
+  /* padding-top: calc(var(--nav-height) + 1.5rem); */
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.hero-tag {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--apple-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.hero-title span.glow-text {
+  color: var(--apple-accent);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Profile Visual Wrapper */
+.profile-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-glow-ring {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 50, 130, 0.7);
+  box-shadow: 0 0 20px rgba(0, 50, 130, 0.15);
+  animation: rotateClockwise 25s linear infinite;
+  pointer-events: none;
+}
+
+.profile-glow-ring::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 50, 130, 0.45);
+  animation: rotateCounter 15s linear infinite;
+}
+
+.profile-image-container {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+  background: var(--apple-card-bg);
+  position: relative;
+  transition: var(--apple-transition);
+}
+
+.profile-image-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-image-container svg,
+.profile-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounter {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Contact Grid elements in summary */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--apple-text-secondary);
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--apple-radius);
+  background: var(--apple-card-bg);
+  border: 1px solid var(--apple-border);
+  transition: var(--apple-transition);
+}
+
+.contact-item svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--apple-text-secondary);
+  stroke-width: 2;
+  transition: var(--apple-transition);
+}
+
+.contact-item:hover {
+  color: var(--apple-text-primary);
+  background: var(--apple-card-bg);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.contact-item:hover svg {
+  stroke: var(--apple-accent);
+}
+
+/* --- SECTION TYPOGRAPHY & HEADER --- */
+.section-header {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--apple-text-secondary);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.section-title span.glow-accent {
+  color: var(--apple-accent);
+}
+
+/* --- EXPERIENCE SECTION (#experience) --- */
+.experience-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.exp-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--apple-accent);
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 980px;
+  background: rgba(0, 113, 227, 0.05);
+  border: 1px solid rgba(0, 113, 227, 0.15);
+  align-self: flex-start;
+}
+
+.exp-role {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.exp-org {
+  font-size: 0.8rem;
+  color: var(--apple-text-muted);
+}
+
+.experience-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experience-details h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.experience-details h3 span {
+  color: var(--apple-accent);
+}
+
+.experience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--apple-text-secondary);
+  font-size: 0.95rem;
+}
+
+.experience-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--apple-accent);
+}
+
+/* --- EDUCATION SECTION (#education) --- */
+.education-timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.education-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.edu-icon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edu-period {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 980px;
+  background: var(--apple-bg);
+  border: 1px solid var(--apple-border);
+}
+
+.edu-institution {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.edu-major {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+  margin-top: -0.5rem;
+}
+
+.edu-major span.gpa {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  background: rgba(0, 113, 227, 0.05);
+  border: 1px solid rgba(0, 113, 227, 0.15);
+  color: var(--apple-accent);
+  border-radius: 4px;
+}
+
+.edu-details {
+  border-top: 1px solid var(--apple-border);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+}
+
+.edu-details strong {
+  color: var(--apple-text-primary);
+}
+
+/* --- SKILLS SECTION (#skills) --- */
+.skills-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+}
+
+.skills-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.skill-category-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-category-title svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--apple-accent);
+  stroke-width: 2;
+  fill: none;
+}
+
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Sharp, industrial style for tech badges (Skills Section) */
+.skill-badge {
+  background: rgba(10, 132, 255, 0.05);
+  border: 1px solid rgba(10, 132, 255, 0.2);
+  color: var(--apple-accent);
+  padding: 6px 14px;
+  border-radius: 6px;
+  /* Sharper corners for a structural look */
+  font-family: monospace;
+  font-size: 0.85rem;
+  transition: var(--apple-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.skill-badge:hover {
+  background: rgba(10, 132, 255, 0.12);
+  border-color: var(--apple-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 132, 255, 0.1);
+}
+
+.skill-badge.accent-badge {
+  background: rgba(227, 0, 113, 0.05);
+  border-color: rgba(227, 0, 113, 0.15);
+  color: #d11d60;
+  /* Apple pink/red accent */
+}
+
+.skill-badge.accent-badge:hover {
+  background: rgba(227, 0, 113, 0.12);
+  border-color: #d11d60;
+  box-shadow: 0 4px 12px rgba(227, 0, 113, 0.1);
+}
+
+/* Languages list styles */
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  background: var(--apple-bg);
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius);
+}
+
+.lang-name {
+  font-weight: 600;
+}
+
+.lang-level {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d11d60;
+  text-transform: uppercase;
+}
+
+/* --- AWARD SECTION (#awards) --- */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.award-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.award-icon-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.award-icon-box {
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.edu-icon-box {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.award-icon-box svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--apple-accent);
+  stroke-width: 2;
+  fill: none;
+}
+
+.award-icon-box img,
+.edu-icon-box img {
+  height: 100%;
+  width: auto;
+  display: block;
+  border: none;
+}
+
+.award-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--apple-text-muted);
+}
+
+.award-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.award-card p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.award-subtext {
+  font-size: 0.78rem;
+  color: var(--apple-text-muted);
+  border-top: 1px solid var(--apple-border);
+  padding-top: 0.65rem;
+  margin-top: auto;
+}
+
+/* Cum Laude highschool timelines */
+.cum-laude-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.cum-laude-item {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--apple-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.cum-laude-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--apple-accent);
+}
+
+/* --- ORGANIZATION EXPERIENCE SECTION (#organization) --- */
+.org-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.org-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+}
+
+.org-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.org-timeline-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--apple-accent);
+  background: rgba(0, 113, 227, 0.05);
+  border: 1px solid rgba(0, 113, 227, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 980px;
+  align-self: flex-start;
+}
+
+.org-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.org-meta-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.org-list-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.org-list-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--apple-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.org-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.org-list li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.org-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--apple-accent);
+}
+
+.org-role-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.org-role-desc {
+  color: var(--apple-text-secondary);
+  font-size: 0.88rem;
+}
+
+/* --- CONTACT SECTION (#contact) --- */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info-panel h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.contact-info-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-links-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.contact-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  border-radius: var(--apple-radius);
+  background: var(--apple-card-bg);
+  border: 1px solid var(--apple-border);
+  text-decoration: none;
+  color: var(--apple-text-secondary);
+  transition: var(--apple-transition);
+}
+
+.contact-link-card .icon-holder {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--apple-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--apple-border);
+  transition: var(--apple-transition);
+}
+
+.contact-link-card .icon-holder svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--apple-text-secondary);
+  stroke-width: 2;
+  transition: var(--apple-transition);
+}
+
+.contact-link-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-link-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--apple-text-muted);
+}
+
+.contact-link-value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--apple-text-primary);
+  margin-top: 0.1rem;
+}
+
+.contact-link-card:hover {
+  border-color: var(--apple-border-hover);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.contact-link-card:hover .icon-holder {
+  background: rgba(0, 113, 227, 0.05);
+  border-color: rgba(0, 113, 227, 0.15);
+}
+
+.contact-link-card:hover .icon-holder svg {
+  stroke: var(--apple-accent);
+  transform: scale(1.08);
+}
+
+/* Contact form details */
+.contact-form-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+}
+
+.form-control {
+  background: var(--apple-bg);
+  border: 1px solid var(--apple-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--apple-text-primary);
+  font-family: var(--apple-font);
+  font-size: 0.92rem;
+  transition: var(--apple-transition);
+  width: 100%;
+}
+
+.form-control:focus {
+  outline: none;
+  background: var(--apple-card-bg);
+  border-color: var(--apple-accent);
+  box-shadow: 0 0 8px rgba(0, 113, 227, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Capsule Submit Button */
+.btn-submit {
+  background-color: var(--apple-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  /* Fully rounded capsule button style */
+  padding: 10px 24px;
+  font-family: var(--apple-font);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--apple-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-submit svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+  transition: var(--apple-transition);
+}
+
+.btn-submit:hover {
+  background-color: var(--apple-accent-hover);
+}
+
+.btn-submit:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- FOOTER --- */
+footer {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--apple-border);
+  background: var(--apple-card-bg);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 0.82rem;
+  color: var(--apple-text-muted);
+}
+
+.footer-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--apple-text-primary);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* --- RESPONSIVENESS (MOBILE/TABLET) --- */
+@media (max-width: 1024px) {
+  .hero-grid {
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .profile-glow-ring {
+    width: 240px;
+    height: 240px;
+  }
+
+  .profile-image-container {
+    width: 190px;
+    height: 190px;
+  }
+
+  .education-timeline,
+  .skills-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--apple-border);
+    padding: 6rem 2rem 2rem 2rem;
+    transition: var(--apple-transition);
+    z-index: 105;
+  }
+
+  nav.open {
+    right: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+    display: block;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-tag {
+    justify-content: center;
+  }
+
+  .profile-visual {
+    order: -1;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .experience-meta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--apple-border);
+    padding-bottom: 0.5rem;
+  }
+
+  .exp-role {
+    margin-top: 0;
+  }
+
+  .org-card {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 3.5rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .portfolio-card {
+    padding: 1.25rem;
+  }
+
+  .profile-glow-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-image-container {
+    width: 160px;
+    height: 160px;
+  }
+}
