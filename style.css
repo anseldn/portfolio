@@ -417,6 +417,13 @@ nav a.active::after {
   background: var(--apple-card-bg);
   border: 1px solid var(--apple-border);
   transition: var(--apple-transition);
+  min-width: 0;
+}
+
+.contact-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .contact-item svg {
