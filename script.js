@@ -1,5 +1,5 @@
 /**
- * Anselmus Dwi Nugroho - Personal Portfolio Interactivity
+ * Anselmus Nugroho - Personal Portfolio Interactivity
  * Optimized for standard deployment on custom domain: anseldn.com
  */
 

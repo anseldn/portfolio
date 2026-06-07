@@ -1,4 +1,4 @@
-# Anselmus Dwi Nugroho | Personal Portfolio
+# Anselmus Nugroho | Personal Portfolio
 
 A premium, highly interactive personal portfolio website optimized for lightning-fast performance and clean aesthetics. 
 

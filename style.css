@@ -1,5 +1,5 @@
 /* 
-   Anselmus Dwi Nugroho - Personal Portfolio Style Sheet
+   Anselmus Nugroho - Personal Portfolio Style Sheet
    Optimized for: https://anseldn.com (Vercel deployment)
    Design Aesthetic: Apple "Mac Studio" Light Minimalist
 */
@@ -309,13 +309,15 @@ nav a.active::after {
   font-weight: 800;
 }
 
-.hero-title span.glow-text {
-  color: var(--apple-accent);
+
+.hero-title br {
+  display: none;
 }
 
 .hero-desc {
   font-size: 1.05rem;
   line-height: 1.6;
+  text-align: justify;
 }
 
 /* Profile Visual Wrapper */
@@ -448,7 +450,7 @@ nav a.active::after {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--apple-text-secondary);
+  color: var(--apple-accent);
   margin-bottom: 0.35rem;
   display: block;
 }
@@ -458,9 +460,6 @@ nav a.active::after {
   font-weight: 800;
 }
 
-.section-title span.glow-accent {
-  color: var(--apple-accent);
-}
 
 /* --- EXPERIENCE SECTION (#experience) --- */
 .experience-layout {
@@ -836,45 +835,12 @@ nav a.active::after {
   gap: 2rem;
 }
 
-.org-card {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 2rem;
+.org-wrapper .award-icon-box {
+  height: 72px;
+  min-width: 72px;
+  border-radius: 12px;
 }
 
-.org-header-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.org-timeline-badge {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--apple-accent);
-  background: rgba(0, 113, 227, 0.05);
-  border: 1px solid rgba(0, 113, 227, 0.15);
-  padding: 0.2rem 0.6rem;
-  border-radius: 980px;
-  align-self: flex-start;
-}
-
-.org-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.org-meta-desc {
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
-.org-list-block {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
 
 .org-list-title {
   font-size: 1.05rem;
@@ -1167,6 +1133,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  #summary {
+    margin-top: 6rem;
+  }
+
   nav {
     position: fixed;
     top: 0;
@@ -1255,10 +1225,6 @@ footer {
     color: var(--apple-text-muted);
   }
 
-  .org-card {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
 
   .awards-grid {
     grid-template-columns: 1fr;
