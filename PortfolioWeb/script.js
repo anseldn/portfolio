@@ -1,5 +1,5 @@
 /**
- * Anselmus Nugroho - Personal Portfolio Interactivity
+ * Anselmus Nugroho - Personal Resume Interactivity
  * Optimized for standard deployment on custom domain: anseldn.com
  */
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCursorGlow();
 
   // --- GLASS CARD REFLECTION & 3D TILT EFFECT ---
-  const glassCards = document.querySelectorAll('.portfolio-card');
+  const glassCards = document.querySelectorAll('.resume-card');
 
   glassCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- CONTACT FORM SUBMIT HANDLER ---
-  const contactForm = document.getElementById('portfolio-contact-form');
+  const contactForm = document.getElementById('resume-contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();

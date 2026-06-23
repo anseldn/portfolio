@@ -1,6 +1,6 @@
-# Anselmus Nugroho | Personal Portfolio
+# Anselmus Nugroho | Personal Resume
 
-A premium, highly interactive personal portfolio website optimized for lightning-fast performance and clean aesthetics. 
+A premium, highly interactive personal resume website optimized for lightning-fast performance and clean aesthetics. 
 
 *   **Custom Domain:** [anseldn.com](https://anseldn.com)
 *   **Aesthetic Theme:** Apple "Mac Studio" Light Minimalist
@@ -23,7 +23,7 @@ Inspired by the design philosophies of the **Apple Design Team**, the user inter
     | ![](https://placehold.co/20x20/0071e3/0071e3.png) | `--apple-accent` | `#0071e3` | Apple Blue (Buttons, Active States & Links) |
 *   **Typography:** Utilizes a custom font stack starting with `-apple-system` and standardizing headers with a tight letter-spacing (`-0.022em`) mirroring Apple's distinct marketing layouts.
 *   **Dynamic Micro-Interactions:**
-    *   **3D Glassmorphism Cards:** Elevates sections using `.portfolio-card` containers with subtle depth transitions.
+    *   **3D Glassmorphism Cards:** Elevates sections using `.resume-card` containers with subtle depth transitions.
     *   **Interactive 3D Mouse Tilt:** Implements physical rotation (perspective tilt) when the mouse hovers over cards.
     *   **Dynamic Reflection Gradient:** Tracks cursor positions on top of card components, rendering a subtle radial reflection gradient (`--mouse-x`, `--mouse-y`) that follows the user's cursor.
     *   **Sticky Blurred Navigation:** The header dynamically adds a blurred transparent background using `backdrop-filter: blur(20px)` and scales gracefully when scrolled.

@@ -1,5 +1,5 @@
 /* 
-   Anselmus Nugroho - Personal Portfolio Style Sheet
+   Anselmus Nugroho - Personal Resume Style Sheet
    Optimized for: https://anseldn.com (Vercel deployment)
    Design Aesthetic: Apple "Mac Studio" Light Minimalist
 */
@@ -126,8 +126,8 @@ section {
   position: relative;
 }
 
-/* --- APPLE INDUSTRIAL PORTFOLIO CARD --- */
-.portfolio-card {
+/* --- APPLE INDUSTRIAL RESUME CARD --- */
+.resume-card {
   background-color: var(--apple-card-bg);
   border: 1px solid var(--apple-border);
   border-radius: var(--apple-radius);
@@ -139,14 +139,14 @@ section {
 }
 
 /* Subtle depth on hover without loud shadow effects */
-.portfolio-card:hover {
+.resume-card:hover {
   border-color: var(--apple-border-hover);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
 /* 3D mouse highlight element used in hover script (made extremely subtle for light mode) */
-.portfolio-card::before {
+.resume-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1257,7 +1257,7 @@ footer {
     font-size: 1.8rem;
   }
 
-  .portfolio-card {
+  .resume-card {
     padding: 1.25rem;
   }
 
