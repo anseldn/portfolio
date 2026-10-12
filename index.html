@@ -25,6 +25,9 @@
 
   <!-- Styling Sheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Cloudflare Turnstile API -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -607,7 +610,13 @@
                 required></textarea>
             </div>
 
-            <div style="margin-top: 2rem;">
+            <!-- Cloudflare Turnstile Verification Widget -->
+            <div class="turnstile-wrapper">
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAFUorGST2sHMCxcJ" data-theme="light"></div>
+            </div>
+            <div id="turnstile-notice" class="turnstile-notice" role="alert">Please complete the verification check before sending.</div>
+
+            <div style="margin-top: 1.5rem;">
               <button type="submit" class="btn-submit">
                 <span>Send Message</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">

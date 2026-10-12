@@ -1078,6 +1078,31 @@ textarea.form-control {
   cursor: not-allowed;
 }
 
+/* --- CLOUDFLARE TURNSTILE WIDGET --- */
+.turnstile-wrapper {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.turnstile-notice {
+  font-size: 0.82rem;
+  color: #ff3b30;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: none;
+}
+
+.turnstile-notice.visible {
+  display: block;
+  animation: fadeInNotice 0.2s ease-in-out;
+}
+
+@keyframes fadeInNotice {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* --- FOOTER --- */
 footer {
   padding: 2.5rem 0;

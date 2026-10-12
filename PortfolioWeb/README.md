@@ -1,60 +1,57 @@
-# Anselmus Nugroho | Personal Resume
+# Anselmus Nugroho — Personal Portfolio & Interactive Resume
 
-A premium, highly interactive personal resume website optimized for lightning-fast performance and clean aesthetics. 
+A high-performance, minimalist personal portfolio and interactive resume engineered with an Apple-inspired aesthetic.
 
-*   **Custom Domain:** [anseldn.com](https://anseldn.com)
-*   **Aesthetic Theme:** Apple "Mac Studio" Light Minimalist
-
----
-
-## 🎨 Design System & Aesthetics
-
-Inspired by the design philosophies of the **Apple Design Team**, the user interface focuses on clean spaces, high contrast, typography hierarchy, and organic physical interaction models.
-
-*   **Color Palette:**
-
-    | Sample | Token / Variable | Value / Hex | Purpose |
-    | :---: | :--- | :--- | :--- |
-    | ![](https://placehold.co/20x20/f5f5f7/f5f5f7.png) | `--apple-bg` | `#f5f5f7` | Light Aluminum White (Base Background) |
-    | ![](https://placehold.co/20x20/ffffff/ffffff.png) | `--apple-card-bg` | `#ffffff` | Pure White (Cards & Elevated Containers) |
-    | ![](https://placehold.co/20x20/1d1d1f/1d1d1f.png) | `--apple-text-primary` | `#1d1d1f` | Charcoal Black (Headers & Primary Text) |
-    | ![](https://placehold.co/20x20/6e6e73/6e6e73.png) | `--apple-text-secondary` | `#6e6e73` | Space Gray (Subtitles & Secondary Text) |
-    | ![](https://placehold.co/20x20/86868b/86868b.png) | `--apple-text-muted` | `#86868b` | Light Space Gray (Metadata & Small Info) |
-    | ![](https://placehold.co/20x20/0071e3/0071e3.png) | `--apple-accent` | `#0071e3` | Apple Blue (Buttons, Active States & Links) |
-*   **Typography:** Utilizes a custom font stack starting with `-apple-system` and standardizing headers with a tight letter-spacing (`-0.022em`) mirroring Apple's distinct marketing layouts.
-*   **Dynamic Micro-Interactions:**
-    *   **3D Glassmorphism Cards:** Elevates sections using `.resume-card` containers with subtle depth transitions.
-    *   **Interactive 3D Mouse Tilt:** Implements physical rotation (perspective tilt) when the mouse hovers over cards.
-    *   **Dynamic Reflection Gradient:** Tracks cursor positions on top of card components, rendering a subtle radial reflection gradient (`--mouse-x`, `--mouse-y`) that follows the user's cursor.
-    *   **Sticky Blurred Navigation:** The header dynamically adds a blurred transparent background using `backdrop-filter: blur(20px)` and scales gracefully when scrolled.
+* **Live Website:** [anseldn.com](https://anseldn.com)
+* **Aesthetic Direction:** Apple "Mac Studio" Light Minimalist
+* **Architecture:** Zero-Framework Vanilla Web (Pure HTML5, CSS3, ES6+ JavaScript)
 
 ---
 
-## 🛠️ Tech Stack & Features
+## 🎯 Purpose & Overview
 
-*   **Frontend Core:** Semantic HTML5, Vanilla CSS3 (Custom Properties), and Vanilla JavaScript (ES6+). Zero frameworks or heavy external libraries are used, ensuring a 100% Google PageSpeed score and 60 FPS scrolling performance.
-*   **Active Section Tracking:** Uses an `IntersectionObserver` to track the user's viewport focus and highlight active sections on the navigation bar in real-time.
-*   **Honeypot Spam Defense:** Includes a hidden `#form-honey` input field to catch automated spambots and silently deflect them, saving database and notification limits.
-*   **Contact Form Backend:** Processes messages asynchronously using standard `fetch()` API, routing JSON payloads directly into a secure **Google Apps Script Web App** connected to Google Sheets and notifications.
+This website serves as the official digital portfolio and interactive academic resume of **Anselmus Nugroho**, a Computer Science student at BINUS University specializing in **AI-Driven Software Engineering** and **Full-Stack Development**.
+
+The website is crafted to:
+* **Showcase Real-World Engineering:** Highlight production-grade full-stack systems and freelance client projects, including multi-language event invitation systems, QR verification pipelines, and relational database integrations.
+* **Demonstrate Academic & Competitive Rigor:** Present verified academic milestones (BINUS University Computer Science), hackathon honors (Top 7th Global Finalist at Garuda Hacks 6.0), and Olympiad achievements.
+* **Reflect Leadership & Governance:** Outline multi-campus financial administration, budgeting architectures, and committee leadership within university organizations (KMK BINUS).
+* **Enable Direct & Secure Communication:** Provide a streamlined, reliable contact channel for recruiters, engineering peers, and clients to connect directly.
 
 ---
 
-## 🚀 Deployment (Vercel)
+## 🎨 Design Philosophy & Aesthetics
 
-This website is designed to be fully static and is optimized for deployment on Vercel:
+Inspired by the design language of the **Apple Design Team**, the user interface emphasizes clarity, high visual hierarchy, clean negative space, and organic physical interaction models.
 
-### Option A: Deployment via Github (Recommended)
-1. Push this directory to a GitHub repository.
-2. Link the repository to your Vercel Dashboard.
-3. Vercel will auto-detect the static output and deploy it on every push to your main branch.
+### 1. Curated Color System
 
-### Option B: Deployment via Vercel CLI
-If you have Vercel CLI installed, you can deploy directly from your command line:
+| Token | Hex Value | Purpose |
+| :--- | :--- | :--- |
+| `--apple-bg` | `#f5f5f7` | Light Aluminum White (Base canvas background) |
+| `--apple-card-bg` | `#ffffff` | Pure White (Elevated content cards & panels) |
+| `--apple-text-primary` | `#1d1d1f` | Deep Charcoal (Headings & primary copy) |
+| `--apple-text-secondary` | `#6e6e73` | Space Gray (Subtitles, descriptions & captions) |
+| `--apple-text-muted` | `#86868b` | Muted Space Gray (Timestamps & metadata badges) |
+| `--apple-accent` | `#0071e3` | Apple Blue (Interactive buttons, links & focus rings) |
 
-```bash
-# Install Vercel CLI if not already installed
-npm install -g vercel
+### 2. Apple Typography Hierarchy
+Utilizes the Apple system font stack (`-apple-system`, `BlinkMacSystemFont`, `Inter`, `SF Pro`), calibrated with tight letter-spacing (`-0.022em` on major titles) to recreate Apple's distinctive editorial presentation.
 
-# Deploy the website
-vercel
-```
+### 3. Organic Micro-Interactions & Physics
+* **3D Perspective Tilt:** Resume cards calculate cursor coordinates in real-time, tilting with subtle 3D depth perspective when hovered.
+* **Dynamic Radial Glass Reflection:** Tracks the user's cursor position across card surfaces, rendering an organic light sheen (`--mouse-x`, `--mouse-y`) that mimics real glass.
+* **Interactive Cursor Glow (LERP):** A soft ambient illumination layer tracks the cursor across the viewport with linear interpolation smoothing (`0.08` easing factor).
+* **Sticky Translucent Navigation:** A frosted header featuring dynamic background blurring (`backdrop-filter: blur(20px)`) that adapts smoothly during page scroll.
+
+---
+
+## ✨ Core Features & Engineering Highlights
+
+* **Zero-Framework High Performance:** Built entirely with semantic HTML5, vanilla CSS custom properties, and modern vanilla ES6+ JavaScript. Free from bloated runtime dependencies, delivering instant page loads and 60 FPS scrolling.
+* **Active Section Tracking (ScrollSpy):** Uses the native browser `IntersectionObserver` API to track viewport focus in real time and automatically highlight the current section in the navigation bar.
+* **Dual-Shield Spam Defense:**
+  * **Honeypot Trap:** Incorporates an invisible decoy input field (`#form-honey`) to silently mislead automated form scrapers without triggering server executions.
+  * **Cloudflare Turnstile Verification:** Protects the contact form and backend endpoint against bots and direct automated POST attacks using Cloudflare's privacy-first, zero-puzzle challenge.
+* **Serverless Backend Integration:** The contact form processes submissions asynchronously through native `fetch()`, transmitting validated JSON payloads into a secure Google Apps Script backend connected to Google Sheets and instant email dispatch.
+* **Responsive Layout:** Engineered with an adaptive CSS Grid and Flexbox system, delivering an optimized layout across mobile, tablet, laptop, and ultra-wide displays.

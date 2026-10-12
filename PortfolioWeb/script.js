@@ -152,11 +152,27 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = `Message Sent! ✓`;
         submitBtn.style.background = 'linear-gradient(135deg, #00f2fe, #24ff72)';
         contactForm.reset();
+        if (window.turnstile) {
+          window.turnstile.reset();
+        }
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
           submitBtn.style.background = '';
           submitBtn.disabled = false;
         }, 3000);
+        return;
+      }
+
+      // Cloudflare Turnstile verification check
+      const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]')?.value || '';
+      if (!turnstileToken) {
+        const turnstileNotice = document.getElementById('turnstile-notice');
+        if (turnstileNotice) {
+          turnstileNotice.classList.add('visible');
+          setTimeout(() => turnstileNotice.classList.remove('visible'), 4000);
+        } else {
+          alert('Please complete the verification check before sending.');
+        }
         return;
       }
 
@@ -176,7 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
           name: nameVal,
           email: emailVal,
           subject: subjectVal,
-          message: messageVal
+          message: messageVal,
+          turnstileToken: turnstileToken
         })
       })
         .then(response => {
@@ -194,6 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error(data.message || 'Submission failed');
           }
 
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+
           setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.style.background = '';
@@ -204,6 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error submitting form:', error);
           submitBtn.innerHTML = `Error! Try again. ✕`;
           submitBtn.style.background = 'linear-gradient(135deg, #ff416c, #ff4b2b)';
+
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
 
           setTimeout(() => {
             submitBtn.innerHTML = originalText;
